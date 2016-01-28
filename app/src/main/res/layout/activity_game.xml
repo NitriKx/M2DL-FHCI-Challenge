@@ -37,7 +37,8 @@
                 android:id="@+id/button"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:onClick="onClickJouer"/>
         </LinearLayout>
 
     </RelativeLayout>

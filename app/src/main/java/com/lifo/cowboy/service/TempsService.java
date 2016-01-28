@@ -60,6 +60,10 @@ public class TempsService {
         return this.jeuTempsFin - this.jeuTempsDebut;
     }
 
+    public boolean getIsJeuEnCours() {
+        return isJeuEnCours;
+    }
+
     //
     //  SINGLETON
     //

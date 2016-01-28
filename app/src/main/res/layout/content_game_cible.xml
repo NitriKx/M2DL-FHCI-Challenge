@@ -10,5 +10,7 @@
         android:id="@+id/button2"
         android:layout_marginBottom="107dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickCible"/>
+
 </RelativeLayout>
