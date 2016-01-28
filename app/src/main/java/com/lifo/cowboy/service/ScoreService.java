@@ -17,7 +17,7 @@ public class ScoreService {
     //  SCORES
     //
 
-    public Score enregistrerScore(float temps, String pseudo){
+    public Score enregistrerScore(float temps, String pseudo) {
         Score nouveauScore = new Score(pseudo, temps, new Date());
         nouveauScore.save();
         return nouveauScore;

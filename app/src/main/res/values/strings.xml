@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Cowboy</string>
+
+    <string name="title_activity_nouveau_score">NouveauScoreActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="nouveau_score_result_label_text">Votre score</string>
+    <string name="leaderboard_pas_de_score_enregistre">Aucun score enregistré</string>
 </resources>
