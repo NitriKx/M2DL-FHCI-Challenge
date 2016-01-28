@@ -24,7 +24,7 @@ public class ScoreService {
     }
 
     public List<Score> getMeilleursScores(int limit) {
-        return SQLite.select().from(Score.class).orderBy(Score_Table.temps, false).limit(limit).queryList();
+        return SQLite.select().from(Score.class).orderBy(Score_Table.temps, true).limit(limit).queryList();
     }
 
     //
