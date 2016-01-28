@@ -1,6 +1,7 @@
 package com.lifo.cowboy;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Handler;
@@ -58,8 +59,6 @@ public class NouveauScoreActivity extends AppCompatActivity {
 
     private float score;
 
-    private boolean isLeaderboardAffiche = false;
-
     private View mContentView;
 
 
@@ -74,7 +73,6 @@ public class NouveauScoreActivity extends AppCompatActivity {
 
         hideMenuBars();
 
-        isLeaderboardAffiche = true;
         showFormulaireEnregistrement();
     }
 
@@ -90,24 +88,11 @@ public class NouveauScoreActivity extends AppCompatActivity {
         this.finish();
     }
 
-    @Override
-    public void onBackPressed() {
-        if (isLeaderboardAffiche) {
-            showFormulaireEnregistrement();
-        } else {
-            super.onBackPressed();
-        }
-    }
-
     //
     //   METHODES AFFICHAGE
     //
 
     public void showFormulaireEnregistrement() {
-        if (isLeaderboardAffiche == false) {
-            return;
-        }
-        isLeaderboardAffiche = false;
         setContentView(R.layout.activity_nouveau_score_pseudo);
         updatePseudoDefaut();
         updateScore();
@@ -136,61 +121,15 @@ public class NouveauScoreActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     *
+     * @param v
+     */
     public void showLeaderboard(View v) {
-        if (isLeaderboardAffiche) {
-            return;
-        }
-        isLeaderboardAffiche = true;
-        setContentView(R.layout.activity_nouveau_score_leader_board);
-        dessinerTableauLeaderBoard();
+        Intent i = new Intent(this, LeaderboardActivity.class);
+        startActivity(i);
     }
 
-    private void dessinerTableauLeaderBoard() {
-
-        // On récupère les scores
-        List<Score> meilleursScores = ScoreService.getInstance().getMeilleursScores(10);
-
-        TableLayout rowContainer = (TableLayout) findViewById(R.id.leaderboard_table_values);
-        // Si on a pas de score enregistrés, on affiche un message pour dire qu'il n'y a pas de scores
-        if (meilleursScores.size() <= 0) {
-            TextView pasDeScoreMessage = new TextView(this);
-            pasDeScoreMessage.setText(getString(R.string.leaderboard_pas_de_score_enregistre));
-            rowContainer.addView(pasDeScoreMessage);
-            return;
-        }
-
-        // On dessine le tableau
-        int rang = 1;
-        TableRow.LayoutParams tableRowLayoutParameters = new TableRow.LayoutParams();
-        tableRowLayoutParameters.height = TableRow.LayoutParams.WRAP_CONTENT;
-        tableRowLayoutParameters.width = TableRow.LayoutParams.WRAP_CONTENT;
-        tableRowLayoutParameters.gravity = Gravity.CENTER;
-        TableRow.LayoutParams tableRowItemsLayoutParameters = new TableRow.LayoutParams();
-        tableRowItemsLayoutParameters.height = TableRow.LayoutParams.WRAP_CONTENT;
-        tableRowItemsLayoutParameters.width = TableRow.LayoutParams.WRAP_CONTENT;
-
-        for (Score score: meilleursScores) {
-            TableRow row = new TableRow(this);
-            if (rang % 2 == 0) {
-                row.setBackgroundColor(Color.parseColor("#e6e6e6"));
-            }
-
-            TextView textViewRang = new TextView(this);
-            textViewRang.setText(Integer.toString(rang));
-            row.addView(textViewRang, tableRowItemsLayoutParameters);
-
-            TextView textViewPseudo = new TextView(this);
-            textViewPseudo.setText(score.pseudo);
-            row.addView(textViewPseudo, tableRowItemsLayoutParameters);
-
-            TextView textViewScore = new TextView(this);
-            textViewScore.setText(scoreFormatter.format(score.temps));
-            row.addView(textViewScore, tableRowItemsLayoutParameters);
-
-            rowContainer.addView(row, tableRowLayoutParameters);
-            rang++;
-        }
-    }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
