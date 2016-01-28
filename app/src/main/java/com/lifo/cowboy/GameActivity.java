@@ -193,6 +193,7 @@ public class GameActivity extends AppCompatActivity implements DansLaPocheListen
      */
     public void retourAuMenuPrincipal() {
         jeuEnCours = false;
+        enTrainDeViser = false;
 
         if (mp != null) {
             mp.release();
