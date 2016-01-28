@@ -24,6 +24,7 @@
 
         <activity
             android:name=".NouveauScoreActivity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_nouveau_score"
             android:screenOrientation="portrait">
