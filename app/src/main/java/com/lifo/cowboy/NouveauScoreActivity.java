@@ -134,11 +134,6 @@ public class NouveauScoreActivity extends AppCompatActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-
-        // Re-masque les barres lorsque le clavier est fermé
-        if (newConfig.keyboardHidden == Configuration.KEYBOARDHIDDEN_YES) {
-            hideMenuBars();
-        }
     }
 
 
