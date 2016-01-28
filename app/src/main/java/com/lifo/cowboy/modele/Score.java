@@ -1,36 +1,41 @@
 package com.lifo.cowboy.modele;
 
+import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.ModelContainer;
+import com.raizlabs.android.dbflow.annotation.PrimaryKey;
+import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.structure.BaseModel;
+
 import java.util.Date;
 
 /**
  * Created by Stav on 28/01/2016.
  */
-public class Score {
-    float temps;
-    String pseudo;
-    Date date;
+@ModelContainer
+@Table(database = BaseDeDonneeLocale.class)
+public class Score extends BaseModel {
 
-    public float getTemps() {
-        return temps;
+    @Column
+    @PrimaryKey(autoincrement = true)
+    public int id;
+
+    @Column
+    public float temps;
+
+    @Column
+    public String pseudo;
+
+    @Column
+    public Date date;
+
+    public Score() {
+        super();
     }
 
-    public void setTemps(float temps) {
-        this.temps = temps;
-    }
-
-    public String getPseudo() {
-        return pseudo;
-    }
-
-    public void setPseudo(String pseudo) {
+    public Score(String pseudo, float temps, Date date) {
+        super();
         this.pseudo = pseudo;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
+        this.temps = temps;
         this.date = date;
     }
 }
