@@ -22,6 +22,8 @@ import com.lifo.cowboy.util.RandomInt;
 
 public class GameActivity extends AppCompatActivity implements DansLaPocheListener {
 
+    private boolean jeuEnCours = false;
+
     TextView tv;
     DansLaPoche dansLaPoche;
     MediaPlayer mp;
@@ -34,6 +36,9 @@ public class GameActivity extends AppCompatActivity implements DansLaPocheListen
     }
 
     public void onClickJouer(View view) {
+
+        jeuEnCours = true;
+
         dansLaPoche = new DansLaPoche(this);
         dansLaPoche.ajoutListener(this);
 
@@ -156,6 +161,40 @@ public class GameActivity extends AppCompatActivity implements DansLaPocheListen
             i.putExtra("score", scoreSecondes);
             startActivity(i);
         }
+
         mp.pause();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        retourAuMenuPrincipal();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (jeuEnCours) {
+            retourAuMenuPrincipal();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    /**
+     *
+     */
+    public void retourAuMenuPrincipal() {
+        jeuEnCours = false;
+
+        if (mp != null) {
+            mp.stop();
+            mp = null;
+        }
+
+        if (dansLaPoche != null) {
+            dansLaPoche.retirerListener(this);
+            dansLaPoche = null;
+        }
+
+        setContentView(R.layout.activity_game);
     }
 }
