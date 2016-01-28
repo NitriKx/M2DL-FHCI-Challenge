@@ -6,4 +6,5 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="nouveau_score_result_label_text">Votre score</string>
     <string name="leaderboard_pas_de_score_enregistre">Aucun score enregistré</string>
+    <string name="title_activity_leaderboard">Leaderboard</string>
 </resources>
