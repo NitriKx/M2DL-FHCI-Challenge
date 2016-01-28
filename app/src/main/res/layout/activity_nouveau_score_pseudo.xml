@@ -11,6 +11,8 @@
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:paddingTop="70dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:id="@+id/resultat_dernier_jeu_fullscreen_content">
 
         <TextView
@@ -71,13 +73,15 @@
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ne pas sauver" />
+                android:text="Ne pas sauver"
+                android:onClick="retourAuJeu" />
 
             <Button
                 android:id="@+id/button2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Enregistrer" />
+                android:text="Enregistrer"
+                android:onClick="enregistrerScore" />
         </LinearLayout>
 
         <LinearLayout

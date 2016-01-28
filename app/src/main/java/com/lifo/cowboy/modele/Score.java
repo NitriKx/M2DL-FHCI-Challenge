@@ -38,7 +38,25 @@ public class Score extends BaseModel {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Score)) return false;
+
+        Score score = (Score) o;
+
+        if (id != score.id) return false;
+        if (Float.compare(score.temps, temps) != 0) return false;
+        if (pseudo != null ? !pseudo.equals(score.pseudo) : score.pseudo != null) return false;
+        return !(date != null ? !date.equals(score.date) : score.date != null);
+
+    }
+
+    @Override
     public int hashCode() {
-        return (temps != +0.0f ? Float.floatToIntBits(temps) : 0);
+        int result = id;
+        result = 31 * result + (temps != +0.0f ? Float.floatToIntBits(temps) : 0);
+        result = 31 * result + (pseudo != null ? pseudo.hashCode() : 0);
+        result = 31 * result + (date != null ? date.hashCode() : 0);
+        return result;
     }
 }
