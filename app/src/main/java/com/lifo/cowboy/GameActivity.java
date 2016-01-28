@@ -149,6 +149,8 @@ public class GameActivity extends AppCompatActivity implements DansLaPocheListen
 
     public void finirJeu(boolean gagne, long score) {
 
+        mp.pause();
+
         if (!gagne) {
             TempsService.getInstance().stopperExecutionAvecDelai();
             tv.setText("Vous avez dégainé trop tôt !");
@@ -161,8 +163,6 @@ public class GameActivity extends AppCompatActivity implements DansLaPocheListen
             i.putExtra("score", scoreSecondes);
             startActivity(i);
         }
-
-        mp.pause();
     }
 
     @Override
@@ -186,7 +186,7 @@ public class GameActivity extends AppCompatActivity implements DansLaPocheListen
         jeuEnCours = false;
 
         if (mp != null) {
-            mp.stop();
+            mp.release();
             mp = null;
         }
 
