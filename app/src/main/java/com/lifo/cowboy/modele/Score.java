@@ -1,7 +1,6 @@
 package com.lifo.cowboy.modele;
 
 import com.raizlabs.android.dbflow.annotation.Column;
-import com.raizlabs.android.dbflow.annotation.ModelContainer;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
 import com.raizlabs.android.dbflow.structure.BaseModel;
@@ -11,7 +10,6 @@ import java.util.Date;
 /**
  * Created by Stav on 28/01/2016.
  */
-@ModelContainer
 @Table(database = BaseDeDonneeLocale.class)
 public class Score extends BaseModel {
 
@@ -37,5 +35,10 @@ public class Score extends BaseModel {
         this.pseudo = pseudo;
         this.temps = temps;
         this.date = date;
+    }
+
+    @Override
+    public int hashCode() {
+        return (temps != +0.0f ? Float.floatToIntBits(temps) : 0);
     }
 }

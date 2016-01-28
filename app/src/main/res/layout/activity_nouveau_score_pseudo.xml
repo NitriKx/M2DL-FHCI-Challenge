@@ -80,5 +80,19 @@
                 android:text="Enregistrer" />
         </LinearLayout>
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="40dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Afficher le Leaderboard"
+                android:id="@+id/leaderboard_bouton_afficher_leaderboard"
+                android:onClick="showLeaderboard" />
+        </LinearLayout>
+
     </LinearLayout>
 </FrameLayout>
