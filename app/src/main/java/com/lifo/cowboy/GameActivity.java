@@ -42,6 +42,15 @@ public class GameActivity extends AppCompatActivity implements DansLaPocheListen
         mp.start();
     }
 
+    /**
+     *
+     * @param v
+     */
+    public void showLeaderboard(View v) {
+        Intent i = new Intent(this, LeaderboardActivity.class);
+        startActivity(i);
+    }
+
     @Override
     public void misDansLaPoche() {
         tv.setText("Préparez-vous !");
