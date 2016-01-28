@@ -15,22 +15,30 @@
         android:layout_alignParentStart="false">
 
         <ImageView
-            android:layout_width="205dp"
-            android:layout_height="312dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/imageView"
             android:background="@drawable/menubackground"
             android:layout_gravity="center"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lancer le jeu"
-            android:id="@+id/button"
-            android:layout_gravity="center_horizontal"
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="350dp"
+            android:layout_height="200dp"
             android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true">
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Lancer le jeu"
+                android:id="@+id/button"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center" />
+        </LinearLayout>
 
     </RelativeLayout>
 
