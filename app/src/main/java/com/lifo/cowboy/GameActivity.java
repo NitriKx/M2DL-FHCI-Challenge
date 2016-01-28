@@ -2,8 +2,8 @@ package com.lifo.cowboy;
 
 import android.animation.Animator;
 import android.content.Context;
-import android.graphics.Point;
 import android.content.Intent;
+import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -148,9 +148,7 @@ public class GameActivity extends AppCompatActivity implements DansLaPocheListen
             TempsService.getInstance().stopperExecutionAvecDelai();
             tv.setText("Vous avez dégainé trop tôt !");
         } else {
-            setContentView(R.layout.content_game_message);
-            tv = (TextView)findViewById(R.id.textView);
-            tv.setText("Votre score : " + String.valueOf(score));
+            setContentView(R.layout.activity_game);
 
             // Démarrage de l'activité de sauvegarde du score
             float scoreSecondes = score / 1000.0F;

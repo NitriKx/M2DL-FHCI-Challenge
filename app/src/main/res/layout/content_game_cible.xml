@@ -6,7 +6,6 @@
     <Button
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:text="CIIIIIIIIIIIIIIIIIIIIIBLE"
         android:id="@+id/cible"
         android:onClick="onClickCible"
         android:background="@drawable/cible" />
