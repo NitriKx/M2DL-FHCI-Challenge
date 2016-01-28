@@ -85,7 +85,6 @@ public class DansLaPoche  implements SensorEventListener {
                 prevenirListener();
             }
         }
-        prevenirListener();
     }
 
     @Override

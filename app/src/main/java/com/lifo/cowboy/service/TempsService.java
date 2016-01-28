@@ -36,6 +36,12 @@ public class TempsService {
         }, delaiAvantExecution);
     }
 
+    public void stopperExecutionAvecDelai() {
+        timer.cancel();
+        timer.purge();
+        timer = new Timer();
+    }
+
 
     public synchronized void demarrerTimerTempsReaction() {
         if (isJeuEnCours) {
@@ -50,6 +56,7 @@ public class TempsService {
             throw new IllegalStateException("Impossible d'arrêter le jeu car il n'est pas lancé");
         }
         this.jeuTempsFin = new Date().getTime();
+        this.isJeuEnCours = false;
         return this.jeuTempsFin - this.jeuTempsDebut;
     }
 
