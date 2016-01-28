@@ -155,7 +155,6 @@ public class GameActivity extends AppCompatActivity implements DansLaPocheListen
             TempsService.getInstance().stopperExecutionAvecDelai();
             tv.setText("Vous avez dégainé trop tôt !");
         } else {
-            setContentView(R.layout.activity_game);
 
             // Démarrage de l'activité de sauvegarde du score
             float scoreSecondes = score / 1000.0F;
