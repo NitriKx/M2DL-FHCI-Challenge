@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.lifo.cowboy.service.TempsService;
 import com.lifo.cowboy.util.DansLaPoche;
 import com.lifo.cowboy.util.DansLaPocheListener;
+import com.lifo.cowboy.util.FontsOverride;
 
 public class GameActivity extends AppCompatActivity implements DansLaPocheListener {
 
@@ -23,6 +24,7 @@ public class GameActivity extends AppCompatActivity implements DansLaPocheListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FontsOverride.setDefaultFont(this, "DEFAULT", "duality.ttf");
         setContentView(R.layout.activity_game);
     }
 
