@@ -79,7 +79,9 @@ public class NouveauScoreActivity extends AppCompatActivity {
     }
 
     public void enregistrerScore(View v) {
-        ScoreService.getInstance().enregistrerScore(this.score, getPseudoEntre());
+        String pseudo = getPseudoEntre();
+        ScoreService.getInstance().enregistrerScore(this.score, pseudo);
+        JoueurService.getInstance().setDernierPseudoUtilise(pseudo);
         Toast.makeText(this, "Score enregistré", Toast.LENGTH_SHORT);
         this.retourAuJeu(v);
     }
