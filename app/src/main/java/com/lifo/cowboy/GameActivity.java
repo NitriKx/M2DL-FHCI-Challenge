@@ -23,6 +23,7 @@ import com.lifo.cowboy.util.RandomInt;
 public class GameActivity extends AppCompatActivity implements DansLaPocheListener {
 
     private boolean jeuEnCours = false;
+    private boolean enTrainDeViser = false;
 
     TextView tv;
     DansLaPoche dansLaPoche;
@@ -63,6 +64,9 @@ public class GameActivity extends AppCompatActivity implements DansLaPocheListen
 
     @Override
     public void misDansLaPoche() {
+        if (enTrainDeViser) {
+            return;
+        }
         tv.setText("Préparez-vous !");
         TempsService.getInstance().executeApresDelaiAleatoire(5000, 10000, new Runnable() {
             @Override
@@ -90,6 +94,9 @@ public class GameActivity extends AppCompatActivity implements DansLaPocheListen
 
     @Override
     public void sortiDeLaPoche() {
+        if (enTrainDeViser) {
+            return;
+        }
         if (TempsService.getInstance().getIsJeuEnCours()) {
             setContentView(R.layout.content_game_cible);
             animationCible();
@@ -101,6 +108,8 @@ public class GameActivity extends AppCompatActivity implements DansLaPocheListen
 
     public void onClickCible(View view) {
         long score;
+
+        enTrainDeViser = false;
 
         try {
             score = TempsService.getInstance().arreterTimerTempsReaction();
@@ -115,6 +124,7 @@ public class GameActivity extends AppCompatActivity implements DansLaPocheListen
     }
 
     public void animationCible() {
+        enTrainDeViser = true;
         final Button cible = (Button)findViewById(R.id.cible);
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
@@ -190,6 +200,12 @@ public class GameActivity extends AppCompatActivity implements DansLaPocheListen
         }
 
         if (dansLaPoche != null) {
+            TempsService.getInstance().stopperExecutionAvecDelai();
+            try {
+                TempsService.getInstance().arreterTimerTempsReaction();
+            } catch (IllegalStateException e) {
+                Log.d("GameActivity", e.getMessage());
+            }
             dansLaPoche.retirerListener(this);
             dansLaPoche = null;
         }
